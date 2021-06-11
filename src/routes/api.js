@@ -1,4 +1,3 @@
-const Parse = require('parse/node');
 const express = require('express');
 const router = express.Router();
 
