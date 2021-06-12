@@ -9,7 +9,7 @@ class RawUsers extends Parse.Object {
 }
 
 exports.getUser = async (req, res) => {
-    const { email } = req.params;
+    const { email } = req.query;
     try {
         const query = new Parse.Query(RawUsers);
         query.equalTo("email", email);
@@ -23,7 +23,7 @@ exports.getUser = async (req, res) => {
 }
 
 exports.getUserAvaliations = async(req, res) => {
-    const { email } = req.params;
+    const { email } = req.query;
     try {
         const queryUser = new Parse.Query(RawUsers);
         queryUser.equalTo("email", email);

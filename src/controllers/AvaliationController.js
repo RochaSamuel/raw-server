@@ -9,7 +9,7 @@ class Avaliation extends Parse.Object {
 }
 
 exports.getProductAvaliations = async (req, res) => {
-    const { produtoId } = req.params;
+    const { produtoId } = req.query;
     try {
         const produtoPointer = ParseUtils.createPointer("Produto", produtoId);
 
