@@ -6,15 +6,15 @@ const avaliationController = require('../controllers/AvaliationController');
 const productController = require('../controllers/ProductController');
 
 //Achar um user pelo email
-router.get('/user/:email', userController.getUser);
+router.get('/user', userController.getUser);
 //Criar um user
 router.post('/user', userController.createUser);
 //Achar as avaliacoes de um user
-router.get('/user/avaliations/:email', userController.getUserAvaliations);
+router.get('/user/avaliations', userController.getUserAvaliations);
 
 
 //Achar avaliacoes de um produto
-router.get('/avaliations/:produtoId', avaliationController.getProductAvaliations);
+router.get('/avaliations', avaliationController.getProductAvaliations);
 //Criar avaliacoes
 router.post('/avaliations', avaliationController.createAvaliation);
 
