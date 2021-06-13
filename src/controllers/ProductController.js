@@ -23,6 +23,19 @@ exports.getProducts = async (req, res) => {
     }
 }
 
+exports.getProductById = async (req, res) => {
+    const { objectId } = req.query;
+    try {
+        const query = new Parse.Query(Produto);
+        query.equalTo("objectId", objectId);
+        const result = await query.first({ useMasterKey: true });
+
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+
 exports.getProductsBySubstring = async (req, res) => {
     const { substring } = req.query;
     try {
