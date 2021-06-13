@@ -14,7 +14,6 @@ exports.getProducts = async (req, res) => {
     try {
         const query = new Parse.Query(Produto);
         query.include("Fabricante");
-        query.select(["nome", "info", "descricao"]);
         const result = await query.find({ useMasterKey: true });
 
         res.status(200).send(result);
@@ -27,6 +26,7 @@ exports.getProductById = async (req, res) => {
     const { objectId } = req.query;
     try {
         const query = new Parse.Query(Produto);
+        query.include("Fabricante");
         query.equalTo("objectId", objectId);
         const result = await query.first({ useMasterKey: true });
 
