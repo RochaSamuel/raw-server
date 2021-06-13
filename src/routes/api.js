@@ -9,6 +9,8 @@ const productController = require('../controllers/ProductController');
 router.get('/user', userController.getUser);
 //Criar um user
 router.post('/user', userController.createUser);
+//update user
+router.put('/user', userController.updateUser);
 //Achar as avaliacoes de um user
 router.get('/user/avaliations', userController.getUserAvaliations);
 

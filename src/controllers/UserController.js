@@ -67,3 +67,25 @@ exports.createUser = async (req, res) => {
         res.status(400).send(error);
     }
 }
+
+exports.updateUser = async (req, res) => {
+    const { userId, nome, sobrenome, quem_sou } = req.body;
+    try {
+        const userObj = new RawUsers();
+        userObj.id = userId;
+        if(nome) {
+            userObj.set("nome", nome);
+        }
+        if(sobrenome) {
+            userObj.set("sobrenome", sobrenome);
+        }
+        if(nome) {
+            userObj.set("quem_sou", quem_sou);
+        }
+        const result = await userObj.save(null, { useMasterKey: true });
+
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
