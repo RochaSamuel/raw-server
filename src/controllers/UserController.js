@@ -78,7 +78,7 @@ exports.updateUser = async (req, res) => {
         if(sobrenome) {
             userObj.set("sobrenome", sobrenome);
         }
-        if(nome) {
+        if(quem_sou) {
             userObj.set("quem_sou", quem_sou);
         }
         const result = await userObj.save(null, { useMasterKey: true });
