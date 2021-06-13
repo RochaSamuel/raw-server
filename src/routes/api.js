@@ -23,6 +23,8 @@ router.post('/avaliations', avaliationController.createAvaliation);
 
 //Listar produtos
 router.get('/produtos', productController.getProducts);
+//Listar um produto
+router.get('/produtoById', productController.getProductById);
 //Listar produtos cujo o titulo bate com uam substring
 router.get('/produtosBySubstring', productController.getProductsBySubstring);
 //listar os ultimos produtos
