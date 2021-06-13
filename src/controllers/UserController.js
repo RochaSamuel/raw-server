@@ -69,10 +69,10 @@ exports.createUser = async (req, res) => {
 }
 
 exports.updateUser = async (req, res) => {
-    const { userId, nome, sobrenome, quem_sou } = req.body;
+    const { objectId, nome, sobrenome, quem_sou } = req.body;
     try {
         const userObj = new RawUsers();
-        userObj.id = userId;
+        userObj.id = objectId;
         if(nome) {
             userObj.set("nome", nome);
         }
