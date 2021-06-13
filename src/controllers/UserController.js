@@ -71,8 +71,7 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     const { objectId, nome, sobrenome, quem_sou } = req.body;
     try {
-        const userObj = new RawUsers();
-        userObj.id = objectId;
+        const userObj = await new Parse.Query(RawUsers).equalTo("objectId", objectId).first({ useMasterKey: true });
         if(nome) {
             userObj.set("nome", nome);
         }
