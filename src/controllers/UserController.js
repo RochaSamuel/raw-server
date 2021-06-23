@@ -9,7 +9,7 @@ class RawUsers extends Parse.Object {
 }
 
 exports.getUser = async (req, res) => {
-    const { email } = req.query;
+    const { email } = req.params;
     try {
         const query = new Parse.Query(RawUsers);
         query.equalTo("email", email);
@@ -23,7 +23,7 @@ exports.getUser = async (req, res) => {
 }
 
 exports.getUserAvaliations = async(req, res) => {
-    const { email } = req.query;
+    const { email } = req.params;
     try {
         const queryUser = new Parse.Query(RawUsers);
         queryUser.equalTo("email", email);
@@ -63,27 +63,6 @@ exports.createUser = async (req, res) => {
             res.status(200).send({objectId: result.id});
         }
 
-    } catch (error) {
-        res.status(400).send(error);
-    }
-}
-
-exports.updateUser = async (req, res) => {
-    const { objectId, nome, sobrenome, quem_sou } = req.body;
-    try {
-        const userObj = await new Parse.Query(RawUsers).equalTo("objectId", objectId).first({ useMasterKey: true });
-        if(nome) {
-            userObj.set("nome", nome);
-        }
-        if(sobrenome) {
-            userObj.set("sobrenome", sobrenome);
-        }
-        if(quem_sou) {
-            userObj.set("quem_sou", quem_sou);
-        }
-        const result = await userObj.save(null, { useMasterKey: true });
-
-        res.status(200).send(result);
     } catch (error) {
         res.status(400).send(error);
     }
